@@ -2,11 +2,11 @@
 
 > High-performance multi-page enterprise landing website built with semantic HTML5, BEM methodology, modular SCSS, and Vanilla JavaScript. Features seamless 30 FPS canvas boomerang video playback, interactive data calculators, real-time signal simulation playground, and a **98+ Mobile Performance score** on Google Lighthouse.
 
-🌐 **Live Demo:** [https://lelyaler.github.io/link/](https://lelyaler.github.io/link/)
+**Live Demo:** [https://lelyaler.github.io/link/](https://lelyaler.github.io/link/)
 
 ---
 
-## 🚀 Key Highlights & Architectural Features
+##  Key Highlights & Architectural Features
 
 - **Multi-Page Architecture:**
   - `index.html` — Hero section with dynamic boomerang video background, platform metrics, and interactive signal simulation.
@@ -25,7 +25,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Markup:** HTML5 (Semantic, accessible, WCAG AA compliant)
 - **Styles:** SCSS / Sass (BEM methodology, compiled with Dart Sass)
