@@ -3,7 +3,6 @@
   const canvas = document.getElementById('boomerangCanvas');
   if (!video || !canvas) return;
 
-  // On mobile screens or data-saver, do not download 16MB desktop video
   const isMobile = window.innerWidth < 768 ||
                    window.matchMedia('(max-width: 768px)').matches ||
                    /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent) ||
@@ -67,10 +66,10 @@
     canvas.width = first.width;
     canvas.height = first.height;
 
-    let index = frames.length - 1; // start from the end where video finished
-    let direction = -1; // smoothly reverse first
+    let index = frames.length - 1;
+    let direction = -1;
     let last = performance.now();
-    const interval = 1000 / 30; // 30 fps smooth native playback rate
+    const interval = 1000 / 30;
 
     function render(now) {
       if (document.hidden) {
@@ -102,7 +101,6 @@
     if (frames.length > 5) {
       startBoomerangPlayback();
     } else {
-      // Fallback: loop video natively if frames could not be captured
       video.currentTime = 0;
       video.play().catch(() => {});
     }
@@ -123,7 +121,6 @@
       }
     }, { once: true });
 
-    // Safety fallback: if ended event does not fire within duration + 0.5s
     video.addEventListener('timeupdate', () => {
       if (capturing && video.duration && video.currentTime >= video.duration - 0.1) {
         onEnded();
