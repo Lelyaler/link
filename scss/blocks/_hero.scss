@@ -1,0 +1,299 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include respond-to(sm) {
+    height: 100vh;
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: radial-gradient(circle at 50% 38%, #eef5ed 0%, #dce8db 45%, #c8dac7 80%, #b8cdb6 100%);
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(ellipse at 45% 40%, rgba(133, 171, 139, 0.35) 0%, transparent 60%),
+                  radial-gradient(ellipse at 65% 55%, rgba(45, 58, 42, 0.12) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    video, canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+
+      &.is-ready {
+        opacity: 1;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+  }
+
+  &__main {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @include respond-to(sm) {
+      padding-top: 7rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    @include respond-to(md) {
+      padding-top: 8rem;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-weight: 400;
+    line-height: 0.95;
+    color: $color-heading-primary;
+    letter-spacing: -0.035em;
+    max-width: 1100px;
+    font-size: 2rem;
+
+    @include respond-to(sm) {
+      font-size: 2.5rem;
+    }
+
+    @include respond-to(md) {
+      font-size: 3.25rem;
+    }
+
+    @include respond-to(lg) {
+      font-size: 4.75rem;
+    }
+
+    @include respond-to(xl) {
+      font-size: 5.25rem;
+    }
+  }
+
+  &__title-accent {
+    color: $color-heading-accent;
+
+    br {
+      display: none;
+      @include respond-to(sm) {
+        display: block;
+      }
+    }
+  }
+
+  &__subtitle {
+    margin-top: 1.5rem;
+    color: $color-body-text;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 440px;
+    padding: 0 0.5rem;
+
+    @include respond-to(sm) {
+      margin-top: 2rem;
+      font-size: 1.05rem;
+    }
+
+    @include respond-to(md) {
+      font-size: 1.15rem;
+    }
+  }
+
+  &__bottom-left {
+    position: relative;
+    z-index: 10;
+    margin: 2rem 1rem 1.5rem 1rem;
+    max-width: 380px;
+
+    @include respond-to(sm) {
+      position: absolute;
+      left: 1.5rem;
+      bottom: 2rem;
+      margin: 0;
+    }
+
+    @include respond-to(md) {
+      left: 2.5rem;
+      bottom: 2.5rem;
+    }
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $color-accent-dark;
+    margin-bottom: 0.75rem;
+
+    @include respond-to(sm) {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+      font-weight: 600;
+
+      @include respond-to(sm) {
+        font-weight: 500;
+      }
+
+      sup {
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  &__desc {
+    color: rgba($color-accent-dark, 0.9);
+    font-size: 0.775rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+    max-width: 320px;
+    font-weight: 500;
+
+    @include respond-to(sm) {
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 400;
+    }
+  }
+
+  &__cta-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__cta-primary {
+    background-color: $color-accent-dark;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.65rem 1.25rem;
+    border-radius: 9999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background-color $transition-default, transform $transition-default;
+
+    &:hover {
+      background-color: $color-accent-hover;
+      transform: translateY(-1px);
+    }
+
+    @include respond-to(sm) {
+      background-color: #ffffff;
+      color: $color-dark-green;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+    }
+  }
+
+  &__cta-secondary {
+    color: $color-accent-dark;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: opacity $transition-default;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @include respond-to(sm) {
+      color: #ffffff;
+      font-weight: 500;
+    }
+  }
+
+  &__video-trigger {
+    display: none;
+
+    @include respond-to(sm) {
+      display: flex;
+      position: absolute;
+      right: 1.5rem;
+      bottom: 2rem;
+      z-index: 10;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: opacity $transition-default;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    @include respond-to(md) {
+      right: 2.5rem;
+      bottom: 2.5rem;
+    }
+  }
+
+  &__play-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    @include flex-center;
+    transition: background-color $transition-default;
+
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+      fill: #ffffff;
+      color: #ffffff;
+      margin-left: 2px;
+    }
+  }
+
+  &__video-label {
+    font-weight: 500;
+  }
+
+  &__video-time {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}

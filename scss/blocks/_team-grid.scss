@@ -1,0 +1,135 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.about-mission {
+  padding: 5rem 0;
+  background-color: #ffffff;
+
+  &__container {
+    @include container;
+  }
+
+  &__story {
+    max-width: 820px;
+    margin: 0 auto 5rem auto;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: $color-body-text;
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    strong {
+      color: $color-dark-green;
+      font-weight: 600;
+    }
+  }
+
+  &__values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 5rem;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__value-card {
+    background: $color-bg-light;
+    border-radius: 1.5rem;
+    padding: 2.25rem 1.75rem;
+    border: 1px solid $color-bg-border;
+  }
+
+  &__value-num {
+    font-family: $font-family-display;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $color-heading-primary;
+    margin-bottom: 0.75rem;
+  }
+
+  &__value-title {
+    font-family: $font-family-display;
+    font-size: 1.35rem;
+    color: $color-dark-green;
+    margin-bottom: 0.6rem;
+  }
+
+  &__value-text {
+    font-size: 0.9rem;
+    color: $color-body-text;
+    line-height: 1.55;
+  }
+
+  &__team-title {
+    font-family: $font-family-display;
+    font-size: 2.25rem;
+    color: $color-heading-primary;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__member {
+    background: #ffffff;
+    border-radius: 1.25rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid $color-bg-border;
+    text-align: center;
+    transition: transform $transition-smooth;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  &__avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 9999px;
+    background: $color-bg-card-subtle;
+    margin: 0 auto 1.25rem auto;
+    @include flex-center;
+    font-family: $font-family-display;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-heading-primary;
+  }
+
+  &__member-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $color-dark-green;
+    margin-bottom: 0.25rem;
+  }
+
+  &__member-role {
+    font-size: 0.85rem;
+    color: $color-heading-accent;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  &__member-bio {
+    font-size: 0.8rem;
+    color: $color-body-text;
+    line-height: 1.45;
+  }
+}

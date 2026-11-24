@@ -1,0 +1,84 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.page-hero {
+  padding: 8.5rem 0 4.5rem 0;
+  background: radial-gradient(circle at 50% 0%, #edf3eb 0%, #faf8f5 100%);
+  border-bottom: 1px solid $color-bg-border-soft;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 25%;
+    width: 450px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(229, 158, 55, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: 25%;
+    width: 450px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.95rem;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    border: 1px solid $color-bg-border;
+    color: $color-heading-primary;
+    font-size: 0.775rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: 2.75rem;
+    line-height: 1.05;
+    color: $color-heading-primary;
+    letter-spacing: -0.035em;
+    max-width: 860px;
+    margin-bottom: 1.25rem;
+
+    @include respond-to(md) {
+      font-size: 4rem;
+    }
+
+    span {
+      color: $color-amber-dark;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.15rem;
+    color: $color-body-text;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+}

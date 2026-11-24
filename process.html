@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover how FluxEngine ingests, reasons, and executes distributed workflows with zero-latency schema evolution and idempotent retry guarantees." />
+  <title>The Process — LinkFlow Architectural Runtime</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  </noscript>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html" class="header__brand">LinkFlow<sup>TM</sup></a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Purpose</a>
+        <a href="process.html" class="header__nav-link header__nav-link--active">The Process</a>
+        <a href="capabilities.html" class="header__nav-link">Capabilities</a>
+        <a href="pricing.html" class="header__nav-link">Tariffs</a>
+        <a href="about.html" class="header__nav-link">Company</a>
+        <a href="contact.html" class="header__btn-live">Try it Live</a>
+      </nav>
+      <div class="header__actions">
+        <a href="contact.html" class="header__action-link"><span>Sign Me Up!</span></a>
+        <a href="contact.html" class="header__action-link"><span>Enter</span></a>
+        <button id="hamburgerBtn" class="header__hamburger" type="button" aria-label="Toggle navigation menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div id="drawerBackdrop" class="mobile-drawer__backdrop"></div>
+    <div class="mobile-drawer__panel">
+      <nav class="mobile-drawer__nav">
+        <a href="index.html" class="mobile-drawer__link">Purpose</a>
+        <a href="process.html" class="mobile-drawer__link">The Process</a>
+        <a href="capabilities.html" class="mobile-drawer__link">Capabilities</a>
+        <a href="pricing.html" class="mobile-drawer__link">Tariffs</a>
+        <a href="about.html" class="mobile-drawer__link">Company</a>
+        <a href="contact.html" class="mobile-drawer__link">Contact & Demo</a>
+      </nav>
+      <div class="mobile-drawer__footer">
+        <a href="contact.html" class="mobile-drawer__cta">Try it Live</a>
+      </div>
+    </div>
+  </aside>
+
+  <section class="page-hero">
+    <div class="page-hero__container">
+      <span class="page-hero__badge">Technical Architecture</span>
+      <h1 class="page-hero__title">
+        The anatomy of a <span>sub-8ms automated workflow</span>
+      </h1>
+      <p class="page-hero__subtitle">
+        How LinkFlow ingests heterogeneous raw payloads, reasons about business context via calibrated agents, and executes atomic actions.
+      </p>
+    </div>
+  </section>
+
+  <section class="deep-dive">
+    <div class="deep-dive__container">
+
+      <div class="deep-dive__split">
+        <div class="deep-dive__info">
+          <span class="deep-dive__tag deep-dive__tag--cyan">Stage 01 • Ingress</span>
+          <h2 class="deep-dive__heading">Universal Ingestion with Cryptographic Fingerprinting</h2>
+          <p class="deep-dive__text">
+            Every webhook, event stream, or queue payload arriving at LinkFlow passes through our edge ingress mesh. The signal is verified, deduplicated, and normalized into an immutable typed envelope.
+          </p>
+          <div class="deep-dive__list">
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Multi-protocol edge: Webhooks, Kafka, AWS SQS, RabbitMQ, gRPC, and REST.</span>
+            </div>
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Instant SHA-256 fingerprinting prevents dual executions during retries.</span>
+            </div>
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Schema evolution guardrails parse missing or mutated JSON keys gracefully.</span>
+            </div>
+          </div>
+        </div>
+        <div class="deep-dive__card">
+          <div class="deep-dive__card-header">
+            <div class="deep-dive__dots"><span></span><span></span><span></span></div>
+            <span class="deep-dive__card-title">ingress_pipeline.ts</span>
+          </div>
+          <div class="deep-dive__card-body">
+            <pre><span class="c-comment">// Step 1: Normalize & Deduplicate Ingress</span>
+<span class="c-keyword">import</span> { SignalEnvelope, IngressMesh } <span class="c-keyword">from</span> <span class="c-string">'@linkflow/core'</span>;
+
+<span class="c-keyword">export const</span> <span class="c-func">handler</span> = <span class="c-keyword">async</span> (event: Request) =&gt; {
+  <span class="c-keyword">const</span> raw = <span class="c-keyword">await</span> event.json();
+  <span class="c-keyword">const</span> envelope = IngressMesh.<span class="c-func">normalize</span>(raw, {
+    dedupKey: raw.transaction_id,
+    window: <span class="c-string">'300s'</span>,
+    verifySignature: <span class="c-keyword">true</span>
+  });
+
+  <span class="c-keyword">return</span> envelope.<span class="c-func">forwardToEngine</span>();
+};</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="deep-dive__split deep-dive__split--reverse">
+        <div class="deep-dive__info">
+          <span class="deep-dive__tag deep-dive__tag--violet">Stage 02 • Reasoning</span>
+          <h2 class="deep-dive__heading">FluxEngine™ Calibrated AI Reasoning</h2>
+          <p class="deep-dive__text">
+            Rather than relying on brittle regex or static if-else trees, FluxEngine evaluates intent through calibrated decision models. It evaluates thresholds, risk scores, and compliance rules in parallel.
+          </p>
+          <div class="deep-dive__list">
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Deterministic structured decisions: strict enum choices, rubrics, and risk scores.</span>
+            </div>
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Ultra-low latency inference cache resolves 84% of queries in under 3ms.</span>
+            </div>
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Zero data retention: payload data is never logged or used for model training.</span>
+            </div>
+          </div>
+        </div>
+        <div class="deep-dive__card">
+          <div class="deep-dive__card-header">
+            <div class="deep-dive__dots"><span></span><span></span><span></span></div>
+            <span class="deep-dive__card-title">flux_reasoning.py</span>
+          </div>
+          <div class="deep-dive__card-body">
+            <pre><span class="c-comment"># Step 2: Calibrated Decision Graph</span>
+<span class="c-keyword">from</span> linkflow.engine <span class="c-keyword">import</span> FluxDecision, CalibratedAgent
+
+agent = CalibratedAgent(model=<span class="c-string">"gemini-flash-calibrated"</span>)
+
+<span class="c-keyword">def</span> <span class="c-func">evaluate_signal</span>(signal):
+    decision = agent.evaluate(
+        context=signal.payload,
+        rubric=<span class="c-string">"fraud_risk_v3"</span>,
+        confidence_threshold=<span class="c-keyword">0.96</span>
+    )
+    <span class="c-keyword">return</span> decision.dispatch_route</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="deep-dive__split">
+        <div class="deep-dive__info">
+          <span class="deep-dive__tag deep-dive__tag--amber">Stage 03 • Action</span>
+          <h2 class="deep-dive__heading">Atomic Dispatch with Self-Healing Fallbacks</h2>
+          <p class="deep-dive__text">
+            Actions are dispatched to external systems with ACID-like transactional guarantees. If downstream APIs encounter rate-limits or temporary 5xx errors, smart circuits isolate the failure without blocking global throughput.
+          </p>
+          <div class="deep-dive__list">
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Automated exponential backoff with jitter and alternate endpoint failover.</span>
+            </div>
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Dead-letter vaults allow inspecting and replaying failed transactions in one click.</span>
+            </div>
+            <div class="deep-dive__list-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Distributed OpenTelemetry spans generated for every single pipeline hop.</span>
+            </div>
+          </div>
+        </div>
+        <div class="deep-dive__card">
+          <div class="deep-dive__card-header">
+            <div class="deep-dive__dots"><span></span><span></span><span></span></div>
+            <span class="deep-dive__card-title">dispatch_router.ts</span>
+          </div>
+          <div class="deep-dive__card-body">
+            <pre><span class="c-comment">// Step 3: Atomic Multicast Execution</span>
+<span class="c-keyword">import</span> { DispatchPool } <span class="c-keyword">from</span> <span class="c-string">'@linkflow/actions'</span>;
+
+<span class="c-keyword">await</span> DispatchPool.<span class="c-func">atomic</span>([
+  { target: <span class="c-string">'stripe.refund'</span>, payload: { amount: 8400 } },
+  { target: <span class="c-string">'hubspot.updateContact'</span>, payload: { status: <span class="c-string">'flagged'</span> } },
+  { target: <span class="c-string">'slack.notifyChannel'</span>, channel: <span class="c-string">'#sec-ops'</span> }
+], {
+  idempotencyToken: signal.fingerprint,
+  rollbackOnFailure: <span class="c-keyword">true</span>
+});</pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta__container">
+      <div class="cta__box">
+        <h2 class="cta__title">Ready to test the runtime in <span>your stack?</span></h2>
+        <p class="cta__desc">Deploy a sandbox in 60 seconds and run your first stream.</p>
+        <div class="cta__actions">
+          <a href="contact.html" class="cta__btn-primary">Launch Sandbox</a>
+          <a href="pricing.html" class="cta__btn-secondary">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__bottom">
+        <span class="footer__copy">&copy; 2026 LinkFlow Technologies Inc. All rights reserved.</span>
+        <div class="footer__socials">
+          <a href="index.html" class="footer__social-link">Home</a>
+          <a href="capabilities.html" class="footer__social-link">Capabilities</a>
+          <a href="pricing.html" class="footer__social-link">Pricing</a>
+          <a href="about.html" class="footer__social-link">About</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/main.js"></script>
+</body>
+</html>

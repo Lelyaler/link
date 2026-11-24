@@ -1,0 +1,124 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.faq {
+  padding: 6.5rem 0;
+  background-color: #ffffff;
+  border-top: 1px solid $color-bg-border-soft;
+
+  &__container {
+    @include container;
+    max-width: 900px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border-radius: 9999px;
+    background-color: rgba($color-heading-primary, 0.08);
+    color: $color-heading-primary;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    color: $color-heading-primary;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+
+    @include respond-to(md) {
+      font-size: 3rem;
+    }
+  }
+
+  &__desc {
+    font-size: 1.05rem;
+    color: $color-body-text;
+    line-height: 1.6;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__item {
+    border-radius: 1.25rem;
+    border: 1px solid $color-bg-border;
+    background-color: $color-bg-light;
+    overflow: hidden;
+    transition: border-color $transition-default, background-color $transition-default, box-shadow $transition-default;
+
+    &--open {
+      background-color: #ffffff;
+      border-color: rgba($color-heading-primary, 0.4);
+      box-shadow: 0 8px 24px rgba(45, 58, 42, 0.06);
+
+      .faq__trigger-icon {
+        transform: rotate(45deg);
+        background-color: $color-heading-primary;
+        color: #ffffff;
+      }
+    }
+  }
+
+  &__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.75rem;
+    text-align: left;
+    font-family: $font-family-display;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $color-dark-green;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    user-select: none;
+    gap: 1.5rem;
+
+    @include respond-to(sm) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__trigger-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background-color: rgba(45, 58, 42, 0.08);
+    @include flex-center;
+    flex-shrink: 0;
+    color: $color-dark-green;
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 300;
+    transition: transform $transition-smooth, background-color $transition-default, color $transition-default;
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &__content-inner {
+    padding: 0 1.75rem 1.75rem 1.75rem;
+    font-size: 0.95rem;
+    color: $color-body-text;
+    line-height: 1.65;
+  }
+}

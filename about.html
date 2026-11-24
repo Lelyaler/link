@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about LinkFlow Technologies, our mission to close the rift between business signals and action, and our global distributed infrastructure." />
+  <title>About LinkFlow — Company, Mission & Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  </noscript>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html" class="header__brand">LinkFlow<sup>TM</sup></a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Purpose</a>
+        <a href="process.html" class="header__nav-link">The Process</a>
+        <a href="capabilities.html" class="header__nav-link">Capabilities</a>
+        <a href="pricing.html" class="header__nav-link">Tariffs</a>
+        <a href="about.html" class="header__nav-link header__nav-link--active">Company</a>
+        <a href="contact.html" class="header__btn-live">Try it Live</a>
+      </nav>
+      <div class="header__actions">
+        <a href="contact.html" class="header__action-link"><span>Sign Me Up!</span></a>
+        <a href="contact.html" class="header__action-link"><span>Enter</span></a>
+        <button id="hamburgerBtn" class="header__hamburger" type="button" aria-label="Toggle navigation menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div id="drawerBackdrop" class="mobile-drawer__backdrop"></div>
+    <div class="mobile-drawer__panel">
+      <nav class="mobile-drawer__nav">
+        <a href="index.html" class="mobile-drawer__link">Purpose</a>
+        <a href="process.html" class="mobile-drawer__link">The Process</a>
+        <a href="capabilities.html" class="mobile-drawer__link">Capabilities</a>
+        <a href="pricing.html" class="mobile-drawer__link">Tariffs</a>
+        <a href="about.html" class="mobile-drawer__link">Company</a>
+        <a href="contact.html" class="mobile-drawer__link">Contact & Demo</a>
+      </nav>
+      <div class="mobile-drawer__footer">
+        <a href="contact.html" class="mobile-drawer__cta">Try it Live</a>
+      </div>
+    </div>
+  </aside>
+
+  <section class="page-hero">
+    <div class="page-hero__container">
+      <span class="page-hero__badge">Company & Philosophy</span>
+      <h1 class="page-hero__title">
+        We are building the substrate for <span>autonomous data flow</span>
+      </h1>
+      <p class="page-hero__subtitle">
+        Founded by distributed systems engineers and machine learning researchers frustrated by fragile integrations.
+      </p>
+    </div>
+  </section>
+
+  <section class="about-mission">
+    <div class="about-mission__container">
+      <div class="about-mission__story">
+        <p>
+          For decades, connecting enterprise software meant choosing between two extremes: rigid, slow point-to-point Zapier-style triggers that break when schemas change, or bespoke Python scripts and cron jobs that require round-the-clock developer maintenance.
+        </p>
+        <p>
+          In 2024, our founding team set out to engineer **LinkFlow** — a platform where incoming signals are treated as first-class citizens. By integrating calibrated AI decision agents directly into the data path, LinkFlow allows engineering teams to automate complex business operations with guaranteed sub-8ms latency.
+        </p>
+      </div>
+
+      <div class="about-mission__values-grid">
+        <div class="about-mission__value-card">
+          <div class="about-mission__value-num">01</div>
+          <h3 class="about-mission__value-title">Zero Glue Code</h3>
+          <p class="about-mission__value-text">
+            Software engineers should build core product value, not waste weeks maintaining brittle webhooks, retry loops, and webhook signing verifications.
+          </p>
+        </div>
+        <div class="about-mission__value-card">
+          <div class="about-mission__value-num">02</div>
+          <h3 class="about-mission__value-title">Deterministic AI</h3>
+          <p class="about-mission__value-text">
+            We reject hallucinations. Our calibrated agents enforce strict typed schemas, confidence boundaries, and automated fallback rules for mission-critical operations.
+          </p>
+        </div>
+        <div class="about-mission__value-card">
+          <div class="about-mission__value-num">03</div>
+          <h3 class="about-mission__value-title">Radical Privacy</h3>
+          <p class="about-mission__value-text">
+            Your data belongs exclusively to you. LinkFlow processes payloads in transient cryptographic memory envelopes with absolute zero-retention defaults.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="about-mission__team-title">Leadership & Systems Architects</h2>
+      <div class="about-mission__team-grid">
+        <div class="about-mission__member">
+          <div class="about-mission__avatar">AK</div>
+          <h4 class="about-mission__member-name">Alexander Keller</h4>
+          <span class="about-mission__member-role">Co-Founder & CEO</span>
+          <p class="about-mission__member-bio">Former Distributed Systems Lead at Stripe & AWS Kinesis. 12+ years in event-driven streaming.</p>
+        </div>
+        <div class="about-mission__member">
+          <div class="about-mission__avatar">EL</div>
+          <h4 class="about-mission__member-name">Elena Lindqvist</h4>
+          <span class="about-mission__member-role">Co-Founder & CTO</span>
+          <p class="about-mission__member-bio">Ex-Google DeepMind research scientist specializing in calibrated decision models and probabilistic graphs.</p>
+        </div>
+        <div class="about-mission__member">
+          <div class="about-mission__avatar">MR</div>
+          <h4 class="about-mission__member-name">Marcus Rodriguez</h4>
+          <span class="about-mission__member-role">VP of Infrastructure</span>
+          <p class="about-mission__member-bio">Architected zero-downtime multi-cloud clusters handling 50B+ daily events at Datadog and Twilio.</p>
+        </div>
+        <div class="about-mission__member">
+          <div class="about-mission__avatar">SC</div>
+          <h4 class="about-mission__member-name">Sarah Chen</h4>
+          <span class="about-mission__member-role">Head of Product</span>
+          <p class="about-mission__member-bio">Product design veteran from Figma and Retool passionate about bi-directional visual-code tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__bottom">
+        <span class="footer__copy">&copy; 2026 LinkFlow Technologies Inc. All rights reserved.</span>
+        <div class="footer__socials">
+          <a href="index.html" class="footer__social-link">Home</a>
+          <a href="process.html" class="footer__social-link">The Process</a>
+          <a href="capabilities.html" class="footer__social-link">Capabilities</a>
+          <a href="pricing.html" class="footer__social-link">Pricing</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/main.js"></script>
+</body>
+</html>

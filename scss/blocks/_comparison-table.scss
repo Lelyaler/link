@@ -1,0 +1,153 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.comparison {
+  padding: 5rem 0;
+  background-color: #ffffff;
+  border-top: 1px solid $color-bg-border-soft;
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: 2.25rem;
+    color: $color-heading-primary;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  &__table-wrapper {
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 1.25rem;
+    border: 1px solid $color-bg-border;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.925rem;
+
+    th, td {
+      padding: 1.15rem 1.5rem;
+      border-bottom: 1px solid rgba(45, 58, 42, 0.08);
+    }
+
+    th {
+      background: $color-bg-light;
+      font-family: $font-family-display;
+      font-size: 1.1rem;
+      color: $color-dark-green;
+      font-weight: 600;
+
+      &:not(:first-child) {
+        text-align: center;
+      }
+    }
+
+    td {
+      color: $color-body-text;
+
+      &:not(:first-child) {
+        text-align: center;
+      }
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .check-icon {
+      color: $color-heading-primary;
+      font-weight: 700;
+    }
+
+    .dash-icon {
+      color: rgba(45, 58, 42, 0.3);
+    }
+  }
+
+  &__calc {
+    margin-top: 4.5rem;
+    background: $color-bg-light;
+    border-radius: 1.75rem;
+    padding: 3rem 2rem;
+    border: 1px solid $color-bg-border;
+    text-align: center;
+
+    @include respond-to(md) {
+      padding: 3.5rem 4rem;
+    }
+  }
+
+  &__calc-title {
+    font-family: $font-family-display;
+    font-size: 1.75rem;
+    color: $color-dark-green;
+    margin-bottom: 0.5rem;
+  }
+
+  &__calc-desc {
+    font-size: 0.95rem;
+    color: $color-body-text;
+    margin-bottom: 2rem;
+  }
+
+  &__slider-wrap {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+  }
+
+  &__slider {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: rgba(45, 58, 42, 0.15);
+    outline: none;
+    cursor: pointer;
+    accent-color: $color-heading-primary;
+  }
+
+  &__slider-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: $color-body-text;
+    margin-top: 0.5rem;
+  }
+
+  &__calc-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  &__calc-box {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.25rem 2rem;
+    border: 1px solid $color-bg-border;
+  }
+
+  &__calc-val {
+    font-family: $font-family-display;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: $color-heading-primary;
+    line-height: 1;
+  }
+
+  &__calc-label {
+    font-size: 0.8rem;
+    color: $color-body-text;
+    margin-top: 0.25rem;
+  }
+}

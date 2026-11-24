@@ -1,0 +1,310 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 1rem 1rem;
+  transition: background-color $transition-default, padding $transition-default;
+
+  @include respond-to(sm) {
+    padding: 1.5rem 1.5rem;
+  }
+
+  @include respond-to(md) {
+    padding: 1.5rem 2.5rem;
+  }
+
+  &--scrolled {
+    position: fixed;
+    background: rgba(247, 249, 246, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(45, 58, 42, 0.08);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $color-medium-green;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    user-select: none;
+
+    @include respond-to(sm) {
+      font-size: 1.35rem;
+    }
+
+    @include respond-to(md) {
+      font-size: 1.5rem;
+    }
+
+    sup {
+      font-size: 0.65rem;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include respond-to(lg) {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.35rem 0.35rem 0.35rem 1.5rem;
+      border-radius: 9999px;
+      @include frosted-glass(0.7, 16px, 0.6);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  &__nav-link {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    color: $color-body-text;
+    transition: color $transition-default, background-color $transition-default;
+
+    &:hover {
+      color: $color-dark-green;
+    }
+
+    &--active {
+      font-weight: 600;
+      color: $color-dark-green;
+    }
+  }
+
+  &__btn-live {
+    margin-left: 0.5rem;
+    background-color: $color-dark-green;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;
+    transition: background-color $transition-default, transform $transition-default;
+
+    &:hover {
+      background-color: $color-btn-hover;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: $color-medium-green;
+
+    @include respond-to(sm) {
+      gap: 1.5rem;
+    }
+  }
+
+  &__action-link {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: opacity $transition-default;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @include respond-to(sm) {
+      display: inline-flex;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &__hamburger {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    @include frosted-glass(0.7, 12px, 0.6);
+    @include flex-center;
+    color: $color-dark-green;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    @include respond-to(lg) {
+      display: none;
+    }
+
+    .icon-menu, .icon-close {
+      position: absolute;
+      width: 1.25rem;
+      height: 1.25rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .icon-menu {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    .icon-close {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0.5);
+    }
+
+    &--open {
+      .icon-menu {
+        opacity: 0;
+        transform: rotate(90deg) scale(0.5);
+      }
+      .icon-close {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+    }
+  }
+}
+
+// Mobile Fullscreen Drawer
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(31, 42, 29, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    transition: transform $transition-drawer;
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 2rem 2.5rem 2rem;
+    overflow-y: auto;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__link {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-dark-green;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(31, 42, 29, 0.08);
+    opacity: 0;
+    transform: translateX(2rem);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+
+    &:hover {
+      color: $color-heading-primary;
+    }
+  }
+
+  &__footer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateX(2rem);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, opacity 0.5s ease 0.3s;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: $color-medium-green;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &__cta {
+    margin-top: 0.5rem;
+    background-color: $color-dark-green;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.85rem 1.5rem;
+    border-radius: 9999px;
+    text-align: center;
+    transition: background-color $transition-default;
+
+    &:hover {
+      background-color: $color-btn-hover;
+    }
+  }
+
+  &--active {
+    pointer-events: auto;
+
+    .mobile-drawer__backdrop {
+      opacity: 1;
+    }
+
+    .mobile-drawer__panel {
+      transform: translateX(0);
+    }
+
+    .mobile-drawer__link, .mobile-drawer__footer {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}

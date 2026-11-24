@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LinkFlow is an autonomous signal orchestration engine that unifies webhooks, event streams, and workflows with real-time reasoning and guaranteed execution." />
+  <title>LinkFlow — Close the rift linking signals and action</title>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  </noscript>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html" class="header__brand" >
+        LinkFlow<sup>TM</sup>
+      </a>
+
+      <nav class="header__nav" aria-label="Main Navigation">
+        <a href="index.html" class="header__nav-link header__nav-link--active">Purpose</a>
+        <a href="process.html" class="header__nav-link">The Process</a>
+        <a href="capabilities.html" class="header__nav-link">Capabilities</a>
+        <a href="pricing.html" class="header__nav-link">Tariffs</a>
+        <a href="about.html" class="header__nav-link">Company</a>
+        <a href="contact.html" class="header__btn-live">Try it Live</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="contact.html" class="header__action-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/>
+          </svg>
+          <span>Sign Me Up!</span>
+        </a>
+
+        <a href="contact.html" class="header__action-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/>
+          </svg>
+          <span>Enter</span>
+        </a>
+
+        <button id="hamburgerBtn" class="header__hamburger" type="button" aria-label="Toggle navigation menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div id="drawerBackdrop" class="mobile-drawer__backdrop"></div>
+    <div class="mobile-drawer__panel">
+      <nav class="mobile-drawer__nav">
+        <a href="index.html" class="mobile-drawer__link">Purpose</a>
+        <a href="process.html" class="mobile-drawer__link">The Process</a>
+        <a href="capabilities.html" class="mobile-drawer__link">Capabilities</a>
+        <a href="pricing.html" class="mobile-drawer__link">Tariffs</a>
+        <a href="about.html" class="mobile-drawer__link">Company</a>
+        <a href="contact.html" class="mobile-drawer__link">Contact & Demo</a>
+      </nav>
+
+      <div class="mobile-drawer__footer">
+        <a href="contact.html" class="mobile-drawer__action">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/>
+          </svg>
+          <span>Sign Me Up!</span>
+        </a>
+        <a href="contact.html" class="mobile-drawer__action">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/>
+          </svg>
+          <span>Enter</span>
+        </a>
+        <a href="contact.html" class="mobile-drawer__cta">Try it Live</a>
+      </div>
+    </div>
+  </aside>
+
+  <section id="hero" class="hero">
+    <div class="hero__bg">
+      <video
+        id="boomerangVideo"
+        data-src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_131941_d136af49-e243-493a-be14-6ff3f24e09e6.mp4"
+        muted
+        playsinline
+        preload="none"
+        crossorigin="anonymous"
+      ></video>
+      <canvas id="boomerangCanvas" style="display: none;"></canvas>
+    </div>
+
+    <div class="hero__main">
+      <h1 class="hero__title">
+        Close the rift <span class="hero__title-accent">linking<br>signals and action</span>
+      </h1>
+      <p class="hero__subtitle">
+        Shape scattered signals into meaningful outcomes via AI-driven workflows.
+      </p>
+    </div>
+
+    <div class="hero__bottom-left">
+      <div class="hero__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+        </svg>
+        <span>FluxEngine<sup>TM</sup></span>
+      </div>
+      <p class="hero__desc">
+        LinkFlow smoothly unites your company systems, streamlining data paths between services without having to write custom scripts.
+      </p>
+      <div class="hero__cta-group">
+        <a href="pricing.html" class="hero__cta-primary">Try it Live</a>
+        <a href="process.html" class="hero__cta-secondary">Know More.</a>
+      </div>
+    </div>
+
+    <a href="process.html" class="hero__video-trigger">
+      <div class="hero__play-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+      </div>
+      <span class="hero__video-label">How we build?</span>
+      <span class="hero__video-time">1:35</span>
+    </a>
+  </section>
+
+  <section class="metrics">
+    <div class="metrics__container">
+      <div class="metrics__grid">
+        <div class="metrics__item metrics__item--emerald">
+          <span class="metrics__tag">Availability</span>
+          <span class="metrics__value">99.995%</span>
+          <span class="metrics__label">Execution reliability across multi-cloud regions</span>
+        </div>
+        <div class="metrics__item metrics__item--amber">
+          <span class="metrics__tag">Speed</span>
+          <span class="metrics__value">&lt; 8ms</span>
+          <span class="metrics__label">Median event-to-action pipeline latency</span>
+        </div>
+        <div class="metrics__item metrics__item--violet">
+          <span class="metrics__tag">Throughput</span>
+          <span class="metrics__value">240M+</span>
+          <span class="metrics__label">High-concurrency signals ingested daily</span>
+        </div>
+        <div class="metrics__item metrics__item--cyan">
+          <span class="metrics__tag">ROI</span>
+          <span class="metrics__value">$4.8M</span>
+          <span class="metrics__label">Average annual engineering hours saved per client</span>
+        </div>
+      </div>
+
+      <div class="metrics__trust">
+        <span class="metrics__trust-title">Trusted by engineering teams powering modern infrastructure</span>
+        <div class="metrics__trust-list">
+          <span class="metrics__trust-logo">APEX FINTECH</span>
+          <span class="metrics__trust-logo">PULSE HEALTH</span>
+          <span class="metrics__trust-logo">VECTOR LOGISTICS</span>
+          <span class="metrics__trust-logo">ORBITAL AI</span>
+          <span class="metrics__trust-logo">NOVUS CLOUD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="process">
+    <div class="process__container">
+      <div class="process__header">
+        <span class="process__badge">Interactive Runtime</span>
+        <h2 class="process__title">How FluxEngine Bridges the Rift</h2>
+        <p class="process__desc">
+          Signals arrive raw and fragmented. LinkFlow ingests, reason-validates, and dispatches automated actions without brittle point-to-point glue code.
+        </p>
+      </div>
+
+      <div class="process__sim">
+        <div class="process__sim-top">
+          <div class="process__sim-heading">
+            <span class="process__sim-pulse"></span>
+            <span>Live Signal Simulation Playground</span>
+          </div>
+          <div class="process__sim-controls">
+            <button type="button" class="process__sim-btn process__sim-btn--active" data-sim="stripe">Stripe Webhook</button>
+            <button type="button" class="process__sim-btn" data-sim="kafka">Kafka Surge</button>
+            <button type="button" class="process__sim-btn" data-sim="auth">SSO Geo Anomaly</button>
+          </div>
+        </div>
+        <div class="process__sim-display">
+          <div class="process__sim-node">
+            <div class="process__sim-node-title">1. Ingress Signal</div>
+            <div id="simSource" class="process__sim-node-val">Stripe: payment_intent.succeeded ($840.00)</div>
+          </div>
+          <div class="process__sim-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="process__sim-node">
+            <div class="process__sim-node-title">2. FluxEngine Agent</div>
+            <div id="simReasoning" class="process__sim-node-val">Calibrated Agent: Verified VIP (Conf: 99.8%)</div>
+          </div>
+          <div class="process__sim-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="process__sim-node">
+            <div class="process__sim-node-title">3. Autonomous Actions</div>
+            <div id="simDispatch" class="process__sim-node-val">Dispatched -&gt; Postgres, Slack #sales, QuickBooks</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process__steps">
+        <div class="process__step">
+          <div>
+            <div class="process__step-top">
+              <span class="process__step-num">01</span>
+              <div class="process__step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="process__step-title">Ingest &amp; Normalize</h3>
+            <p class="process__step-text">
+              Zero-latency webhooks, Kafka streams, and REST hooks map directly into a universal semantic schema with schema evolution safeguards.
+            </p>
+          </div>
+          <div class="process__step-visual">
+            <code>&gt; POST /v1/signals</code>
+            <span>Source: Stripe, AWS SQS, Segment</span>
+          </div>
+        </div>
+
+        <div class="process__step">
+          <div>
+            <div class="process__step-top">
+              <span class="process__step-num">02</span>
+              <div class="process__step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22"/><path d="M18 10h4"/><path d="M2 10h4"/><circle cx="12" cy="6" r="1"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="process__step-title">AI Synthesis &amp; Reasoning</h3>
+            <p class="process__step-text">
+              FluxEngine agents verify transactional integrity, classify business intent, and dynamically branch workflows based on probabilistic confidence.
+            </p>
+          </div>
+          <div class="process__step-visual">
+            <code>&gt; FluxEngine.reason()</code>
+            <span>Confidence: 99.8% | Verified Rule</span>
+          </div>
+        </div>
+
+        <div class="process__step">
+          <div>
+            <div class="process__step-top">
+              <span class="process__step-num">03</span>
+              <div class="process__step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="process__step-title">Autonomous Execution</h3>
+            <p class="process__step-text">
+              Atomic operations dispatched synchronously across CRMs, databases, notifications, and microservices with guaranteed idempotent retry.
+            </p>
+          </div>
+          <div class="process__step-visual">
+            <code>&gt; Dispatch: 3 Endpoints</code>
+            <span>Status: 200 OK [Latency: 7ms]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities" class="capabilities">
+    <div class="capabilities__container">
+      <div class="capabilities__header">
+        <div>
+          <span class="capabilities__badge">Bento Architecture</span>
+          <h2 class="capabilities__title">Engineered for <span>absolute operational resilience</span></h2>
+        </div>
+        <p class="capabilities__lead">
+          Eliminate fragmented micro-scripts and brittle cron jobs. LinkFlow provides an enterprise substrate for modern distributed systems.
+        </p>
+      </div>
+
+      <div class="capabilities__grid">
+        <div class="capabilities__card capabilities__card--violet">
+          <span class="capabilities__card-tag">Composer</span>
+          <h3 class="capabilities__card-title">Zero-Code Logic Graphs</h3>
+          <p class="capabilities__card-text">
+            Build complex stateful pipelines visually or declare them as pure TypeScript / Python code. Hot reload workflows without triggering downtime.
+          </p>
+          <div class="capabilities__card-features">
+            <span class="capabilities__card-pill">Visual Flow Canvas</span>
+            <span class="capabilities__card-pill">Git-Backed Sync</span>
+            <span class="capabilities__card-pill">TypeScript SDK</span>
+          </div>
+        </div>
+
+        <div class="capabilities__card capabilities__card--emerald">
+          <span class="capabilities__card-tag">Security</span>
+          <h3 class="capabilities__card-title">Enterprise Governance &amp; SOC2</h3>
+          <p class="capabilities__card-text">
+            Military-grade envelope encryption at rest and in transit. Fine-grained RBAC, immutable tamper-proof audit trails, and zero data-retention options.
+          </p>
+          <div class="capabilities__card-features">
+            <span class="capabilities__card-pill">SOC2 Type II Certified</span>
+            <span class="capabilities__card-pill">HIPAA Ready</span>
+            <span class="capabilities__card-pill">Custom KMS Keys</span>
+          </div>
+        </div>
+
+        <div class="capabilities__card capabilities__card--coral">
+          <span class="capabilities__card-tag">Reliability</span>
+          <h3 class="capabilities__card-title">Self-Healing Circuit Resiliency</h3>
+          <p class="capabilities__card-text">
+            When third-party APIs encounter throttling or outage spikes, FluxEngine buffers requests in isolated dead-letter vaults with smart exponential backoff.
+          </p>
+          <div class="capabilities__card-features">
+            <span class="capabilities__card-pill">Dead-letter Vaults</span>
+            <span class="capabilities__card-pill">Smart Throttling</span>
+            <span class="capabilities__card-pill">Automatic Failover</span>
+          </div>
+        </div>
+
+        <div class="capabilities__card capabilities__card--cyan">
+          <span class="capabilities__card-tag">Observability</span>
+          <h3 class="capabilities__card-title">Real-Time Deep Telemetry</h3>
+          <p class="capabilities__card-text">
+            Trace every signal from ingress to final action dispatch. Inspect JSON payloads, step-by-step latency profiling, and replay failures with a single click.
+          </p>
+          <div class="capabilities__card-features">
+            <span class="capabilities__card-pill">Live Payload Inspector</span>
+            <span class="capabilities__card-pill">OpenTelemetry Native</span>
+            <span class="capabilities__card-pill">Instant Signal Replay</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <div class="pricing__container">
+      <div class="pricing__header">
+        <span class="pricing__badge">Tariffs</span>
+        <h2 class="pricing__title">Predictable plans for growing data volumes</h2>
+        <p class="pricing__desc">
+          Transparent volume-based pricing. No hidden fees or penalty surcharges on surge hours.
+        </p>
+      </div>
+
+      <div class="pricing__toggle-wrapper">
+        <span id="monthlyLabel" class="pricing__toggle-label pricing__toggle-label--active">Monthly Billing</span>
+        <div id="billingSwitch" class="pricing__switch" role="button" aria-label="Toggle annual discount" tabindex="0"></div>
+        <span id="annualLabel" class="pricing__toggle-label">Annual Billing</span>
+        <span class="pricing__discount-badge">Save 20%</span>
+      </div>
+
+      <div class="pricing__grid">
+        <div class="pricing__card">
+          <div>
+            <h3 class="pricing__card-title">Starter</h3>
+            <p class="pricing__card-desc">For fast-moving product teams setting up their first automated workflows.</p>
+            <div class="pricing__price-wrap">
+              <span id="priceStarter" class="pricing__price-val">$49</span>
+              <span class="pricing__price-period">/ month</span>
+            </div>
+            <ul class="pricing__features-list">
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Up to 250,000 signals / mo</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>35+ pre-built connectors</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>3 team members</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Standard community support</span>
+              </li>
+            </ul>
+          </div>
+          <a href="pricing.html" class="pricing__card-btn pricing__card-btn--secondary">Explore Plan Details</a>
+        </div>
+
+        <div class="pricing__card pricing__card--popular">
+          <span class="pricing__popular-tag">Most Popular</span>
+          <div>
+            <h3 class="pricing__card-title">Growth</h3>
+            <p class="pricing__card-desc">For scaling companies routing high-volume event streams across systems.</p>
+            <div class="pricing__price-wrap">
+              <span id="priceGrowth" class="pricing__price-val">$189</span>
+              <span class="pricing__price-period">/ month</span>
+            </div>
+            <ul class="pricing__features-list">
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Up to 5,000,000 signals / mo</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Full FluxEngine AI reasoning suite</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>140+ enterprise connectors</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Unlimited team seats</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Priority 1-hour SLA support</span>
+              </li>
+            </ul>
+          </div>
+          <a href="contact.html" class="pricing__card-btn pricing__card-btn--primary">Get Started Now</a>
+        </div>
+
+        <div class="pricing__card">
+          <div>
+            <h3 class="pricing__card-title">Enterprise</h3>
+            <p class="pricing__card-desc">Dedicated clusters, private VPC peering, and custom compliance frameworks.</p>
+            <div class="pricing__price-wrap">
+              <span class="pricing__price-val">Custom</span>
+            </div>
+            <ul class="pricing__features-list">
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Unlimited signal volume</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Dedicated isolated infrastructure</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Custom fine-tuned agent models</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>SOC2, HIPAA, ISO27001 BAA</span>
+              </li>
+              <li class="pricing__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>24/7 dedicated solutions architect</span>
+              </li>
+            </ul>
+          </div>
+          <a href="contact.html" class="pricing__card-btn pricing__card-btn--secondary">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="faq__container">
+      <div class="faq__header">
+        <span class="faq__badge">Inquiries</span>
+        <h2 class="faq__title">Frequently Asked Questions</h2>
+        <p class="faq__desc">
+          Everything you need to know about LinkFlow, the FluxEngine™ runtime, and enterprise deployment.
+        </p>
+      </div>
+
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__trigger" type="button" aria-expanded="false">
+            <span>What exactly constitutes a "signal" in LinkFlow?</span>
+            <div class="faq__trigger-icon">+</div>
+          </button>
+          <div class="faq__content">
+            <div class="faq__content-inner">
+              A signal is any discreet event entering your infrastructure — such as a Stripe payment webhook, an IoT telemetry ping, an updated CRM record in Salesforce, or an API call from your internal backend services. LinkFlow normalizes these heterogeneous payloads into clean, actionable data streams in real time.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" type="button" aria-expanded="false">
+            <span>How does FluxEngine™ prevent duplicate or out-of-order executions?</span>
+            <div class="faq__trigger-icon">+</div>
+          </button>
+          <div class="faq__content">
+            <div class="faq__content-inner">
+              FluxEngine maintains distributed cryptographic deduplication keys with configurable sliding time windows. Every incoming signal is fingerprinted upon ingress, guaranteeing strictly-once processing semantics even during network retries or third-party webhook duplicates.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" type="button" aria-expanded="false">
+            <span>Can we deploy LinkFlow on our private VPC or on-premise Kubernetes cluster?</span>
+            <div class="faq__trigger-icon">+</div>
+          </button>
+          <div class="faq__content">
+            <div class="faq__content-inner">
+              Yes. Enterprise customers can choose between our multi-region SOC2 compliant Cloud, private AWS/GCP/Azure VPC peering, or self-hosted deployment via our signed Helm charts and Docker containers with air-gapped data support.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" type="button" aria-expanded="false">
+            <span>How does LinkFlow differ from traditional Zapier or legacy iPaaS tools?</span>
+            <div class="faq__trigger-icon">+</div>
+          </button>
+          <div class="faq__content">
+            <div class="faq__content-inner">
+              Unlike rigid point-to-point Zapier recipes that poll on timers, LinkFlow operates as an event-driven stream processor with single-digit millisecond latency. It includes native AI reasoning agents that interpret unstructured payloads, dynamic graph branching, git-backed code reviews, and enterprise resiliency.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" type="button" aria-expanded="false">
+            <span>What AI models power the contextual decision layer?</span>
+            <div class="faq__trigger-icon">+</div>
+          </button>
+          <div class="faq__content">
+            <div class="faq__content-inner">
+              FluxEngine supports calibrated reasoning using Google Gemini, Anthropic Claude, OpenAI models, or your own self-hosted open-weights models (such as Llama 3 or Mistral) routed through our secure proxy with zero training data retention guarantees.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" type="button" aria-expanded="false">
+            <span>How does the 14-day live sandbox trial work?</span>
+            <div class="faq__trigger-icon">+</div>
+          </button>
+          <div class="faq__content">
+            <div class="faq__content-inner">
+              You get immediate instant access to all Growth-tier features with up to 100,000 test signals in an isolated sandbox environment. No credit card is required to sign up, and you can invite your entire development team during the evaluation period.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="cta">
+    <div class="cta__container">
+      <div class="cta__box">
+        <h2 class="cta__title">
+          Ready to close the rift and <span>automate at scale?</span>
+        </h2>
+        <p class="cta__desc">
+          Spin up an isolated sandbox in under 60 seconds. Connect your first webhook and witness autonomous action orchestration in real time.
+        </p>
+        <div class="cta__actions">
+          <a href="contact.html" class="cta__btn-primary">Claim Your Free Sandbox</a>
+          <a href="process.html" class="cta__btn-secondary">Explore Architecture</a>
+        </div>
+        <div class="cta__terminal" title="Click to copy curl test command">
+          <code>$ curl -X POST https://api.linkflow.dev/v1/sandbox/deploy</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__top">
+        <div class="footer__brand-col">
+          <div class="footer__brand">
+            LinkFlow<sup>TM</sup>
+          </div>
+          <p class="footer__brand-motto">
+            The intelligent signal-to-action substrate for modern distributed architectures and AI-driven enterprises.
+          </p>
+          <div class="footer__status-badge">
+            <span class="footer__status-dot"></span>
+            <span>All systems operational (99.99%)</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title">Product</h3>
+            <li><a href="index.html#hero" class="footer__col-link">FluxEngine</a></li>
+            <li><a href="process.html" class="footer__col-link">The Process</a></li>
+            <li><a href="capabilities.html" class="footer__col-link">Capabilities Hub</a></li>
+            <li><a href="pricing.html" class="footer__col-link">Tariffs & Pricing</a></li>
+            <li><a href="contact.html" class="footer__col-link">Book a Demo</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title">Solutions</h3>
+            <li><a href="capabilities.html" class="footer__col-link">FinTech Payments</a></li>
+            <li><a href="capabilities.html" class="footer__col-link">Fraud Detection</a></li>
+            <li><a href="capabilities.html" class="footer__col-link">Supply Chain Sync</a></li>
+            <li><a href="capabilities.html" class="footer__col-link">AI Agents Orchestration</a></li>
+            <li><a href="capabilities.html" class="footer__col-link">Healthcare Compliance</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title">Resources</h3>
+            <li><a href="process.html" class="footer__col-link">Documentation</a></li>
+            <li><a href="process.html" class="footer__col-link">API Reference</a></li>
+            <li><a href="pricing.html#calculator" class="footer__col-link">Volume Calculator</a></li>
+            <li><a href="index.html#faq" class="footer__col-link">FAQ Knowledgebase</a></li>
+            <li><a href="contact.html" class="footer__col-link">Developer Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title">Company</h3>
+            <li><a href="about.html" class="footer__col-link">About LinkFlow</a></li>
+            <li><a href="about.html" class="footer__col-link">Leadership Team</a></li>
+            <li><a href="about.html" class="footer__col-link">Principles & Trust</a></li>
+            <li><a href="contact.html" class="footer__col-link">Contact Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copy">
+          &copy; 2026 LinkFlow Technologies Inc. All rights reserved. Built with precision.
+        </span>
+
+        <div class="footer__socials">
+          <a href="#" class="footer__social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/boomerang.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>

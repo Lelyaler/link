@@ -1,0 +1,162 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.cta {
+  padding: 5.5rem 0;
+  background-color: $color-bg-light;
+
+  &__container {
+    @include container;
+  }
+
+  &__box {
+    background: radial-gradient(circle at 50% 0%, #1a251f 0%, $color-dark-bg 70%);
+    border-radius: 2.25rem;
+    padding: 3.5rem 2rem;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(133, 171, 139, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(14, 20, 17, 0.35);
+
+    @include respond-to(md) {
+      padding: 5.5rem 4rem;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 20%;
+      width: 450px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: 20%;
+      width: 450px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: 2.5rem;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    max-width: 760px;
+    position: relative;
+    z-index: 2;
+
+    @include respond-to(md) {
+      font-size: 3.65rem;
+    }
+
+    span {
+      background: linear-gradient(135deg, $color-heading-accent 0%, #a7f3d0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 540px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__btn-primary {
+    background-color: #ffffff;
+    color: $color-dark-green;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.95rem 2.25rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+    transition: transform $transition-default, background-color $transition-default, box-shadow $transition-default;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.95);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  &__btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.95rem 1.85rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    transition: background-color $transition-default;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+  }
+
+  &__terminal {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.85rem;
+    padding: 0.85rem 1.5rem;
+    font-family: $font-family-code;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.85);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    cursor: pointer;
+    transition: border-color $transition-default, background-color $transition-default;
+    position: relative;
+    z-index: 2;
+
+    &:hover {
+      border-color: rgba(133, 171, 139, 0.4);
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    code {
+      color: #93c5fd;
+    }
+
+    .copy-hint {
+      font-size: 0.725rem;
+      color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+    }
+  }
+}

@@ -1,0 +1,156 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.contact-section {
+  padding: 5rem 0 6rem 0;
+  background-color: #ffffff;
+
+  &__container {
+    @include container;
+  }
+
+  &__split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr 1.2fr;
+      align-items: start;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: 2.5rem;
+    color: $color-heading-primary;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  &__desc {
+    font-size: 1.05rem;
+    color: $color-body-text;
+    line-height: 1.6;
+  }
+
+  &__perks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  &__perk {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    svg {
+      width: 1.35rem;
+      height: 1.35rem;
+      color: $color-heading-primary;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+  }
+
+  &__perk-title {
+    font-weight: 600;
+    color: $color-dark-green;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  &__perk-desc {
+    font-size: 0.875rem;
+    color: $color-body-text;
+    line-height: 1.5;
+  }
+
+  // Form Card
+  &__card {
+    background: $color-bg-light;
+    border-radius: 1.75rem;
+    padding: 2.5rem 2rem;
+    border: 1px solid $color-bg-border;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+
+    @include respond-to(sm) {
+      padding: 3rem 2.5rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @include respond-to(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $color-dark-green;
+  }
+
+  &__input, &__select, &__textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid $color-bg-border;
+    background: #ffffff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: $color-dark-green;
+    outline: none;
+    transition: border-color $transition-default, box-shadow $transition-default;
+
+    &:focus {
+      border-color: $color-heading-primary;
+      box-shadow: 0 0 0 3px rgba(51, 100, 67, 0.12);
+    }
+  }
+
+  &__textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  &__submit {
+    background-color: $color-dark-green;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    transition: background-color $transition-default, transform $transition-default;
+    cursor: pointer;
+    margin-top: 0.5rem;
+
+    &:hover {
+      background-color: $color-btn-hover;
+      transform: translateY(-1px);
+    }
+  }
+}

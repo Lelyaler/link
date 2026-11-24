@@ -1,0 +1,20 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset' as *;
+
+@use 'blocks/header';
+@use 'blocks/hero';
+@use 'blocks/metrics';
+@use 'blocks/process';
+@use 'blocks/capabilities';
+@use 'blocks/pricing';
+@use 'blocks/faq';
+@use 'blocks/cta';
+@use 'blocks/footer';
+
+// Subpage Components
+@use 'blocks/page-hero';
+@use 'blocks/deep-dive';
+@use 'blocks/comparison-table';
+@use 'blocks/contact-form';
+@use 'blocks/team-grid';

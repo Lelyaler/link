@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Transparent, predictable pricing for engineering teams. Pay only for processed signals with zero per-seat fees or surge penalties." />
+  <title>Tariffs & Pricing Calculator — LinkFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  </noscript>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html" class="header__brand">LinkFlow<sup>TM</sup></a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Purpose</a>
+        <a href="process.html" class="header__nav-link">The Process</a>
+        <a href="capabilities.html" class="header__nav-link">Capabilities</a>
+        <a href="pricing.html" class="header__nav-link header__nav-link--active">Tariffs</a>
+        <a href="about.html" class="header__nav-link">Company</a>
+        <a href="contact.html" class="header__btn-live">Try it Live</a>
+      </nav>
+      <div class="header__actions">
+        <a href="contact.html" class="header__action-link"><span>Sign Me Up!</span></a>
+        <a href="contact.html" class="header__action-link"><span>Enter</span></a>
+        <button id="hamburgerBtn" class="header__hamburger" type="button" aria-label="Toggle navigation menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div id="drawerBackdrop" class="mobile-drawer__backdrop"></div>
+    <div class="mobile-drawer__panel">
+      <nav class="mobile-drawer__nav">
+        <a href="index.html" class="mobile-drawer__link">Purpose</a>
+        <a href="process.html" class="mobile-drawer__link">The Process</a>
+        <a href="capabilities.html" class="mobile-drawer__link">Capabilities</a>
+        <a href="pricing.html" class="mobile-drawer__link">Tariffs</a>
+        <a href="about.html" class="mobile-drawer__link">Company</a>
+        <a href="contact.html" class="mobile-drawer__link">Contact & Demo</a>
+      </nav>
+      <div class="mobile-drawer__footer">
+        <a href="contact.html" class="mobile-drawer__cta">Try it Live</a>
+      </div>
+    </div>
+  </aside>
+
+  <section class="page-hero">
+    <div class="page-hero__container">
+      <span class="page-hero__badge">Transparent Tariffs</span>
+      <h1 class="page-hero__title">
+        Scale your event flows with <span>predictable economics</span>
+      </h1>
+      <p class="page-hero__subtitle">
+        Pay strictly for the signals you process. No surprise per-seat fees or surge surcharges.
+      </p>
+    </div>
+  </section>
+
+  <section class="pricing" style="padding-top: 4rem;">
+    <div class="pricing__container">
+      <div class="pricing__toggle-wrapper">
+        <span id="monthlyLabel" class="pricing__toggle-label pricing__toggle-label--active">Monthly Billing</span>
+        <div id="billingSwitch" class="pricing__switch" role="button" aria-label="Toggle annual discount" tabindex="0"></div>
+        <span id="annualLabel" class="pricing__toggle-label">Annual Billing</span>
+        <span class="pricing__discount-badge">Save 20%</span>
+      </div>
+
+      <div class="pricing__grid">
+        <div class="pricing__card">
+          <div>
+            <h3 class="pricing__card-title">Starter</h3>
+            <p class="pricing__card-desc">For fast-moving product teams setting up their first automated workflows.</p>
+            <div class="pricing__price-wrap">
+              <span id="priceStarter" class="pricing__price-val">$49</span>
+              <span class="pricing__price-period">/ month</span>
+            </div>
+            <ul class="pricing__features-list">
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>250,000 signals / mo</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>35+ pre-built connectors</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>3 team members</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Community support</span></li>
+            </ul>
+          </div>
+          <a href="contact.html" class="pricing__card-btn pricing__card-btn--secondary">Start 14-Day Trial</a>
+        </div>
+
+        <div class="pricing__card pricing__card--popular">
+          <span class="pricing__popular-tag">Most Popular</span>
+          <div>
+            <h3 class="pricing__card-title">Growth</h3>
+            <p class="pricing__card-desc">For scaling companies routing high-volume event streams across systems.</p>
+            <div class="pricing__price-wrap">
+              <span id="priceGrowth" class="pricing__price-val">$189</span>
+              <span class="pricing__price-period">/ month</span>
+            </div>
+            <ul class="pricing__features-list">
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>5,000,000 signals / mo</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>FluxEngine AI reasoning</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>140+ enterprise connectors</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Unlimited team seats</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Priority 1-hour SLA</span></li>
+            </ul>
+          </div>
+          <a href="contact.html" class="pricing__card-btn pricing__card-btn--primary">Get Started Now</a>
+        </div>
+
+        <div class="pricing__card">
+          <div>
+            <h3 class="pricing__card-title">Enterprise</h3>
+            <p class="pricing__card-desc">Dedicated clusters, private VPC peering, and custom compliance frameworks.</p>
+            <div class="pricing__price-wrap">
+              <span class="pricing__price-val">Custom</span>
+            </div>
+            <ul class="pricing__features-list">
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Unlimited signal volume</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Private VPC peering</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Custom agent models</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>SOC2 & HIPAA BAA</span></li>
+              <li class="pricing__feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>24/7 dedicated architect</span></li>
+            </ul>
+          </div>
+          <a href="contact.html" class="pricing__card-btn pricing__card-btn--secondary">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" class="comparison">
+    <div class="comparison__container">
+      <h2 class="comparison__title">Interactive Cost & Savings Calculator</h2>
+
+      <div class="comparison__calc">
+        <h3 class="comparison__calc-title">How many signals does your company process monthly?</h3>
+        <p class="comparison__calc-desc">Drag the slider to see your estimated monthly plan and developer hours saved.</p>
+
+        <div class="comparison__slider-wrap">
+          <input id="volumeSlider" class="comparison__slider" type="range" min="100000" max="15000000" step="100000" value="2500000" />
+          <div class="comparison__slider-meta">
+            <span>100K signals</span>
+            <span>5M signals</span>
+            <span>15M+ signals</span>
+          </div>
+        </div>
+
+        <div class="comparison__calc-result">
+          <div class="comparison__calc-box">
+            <div id="calcSignals" class="comparison__calc-val">2.5M</div>
+            <div class="comparison__calc-label">Monthly Signals</div>
+          </div>
+          <div class="comparison__calc-box">
+            <div id="calcPrice" class="comparison__calc-val">$234</div>
+            <div class="comparison__calc-label">Estimated Monthly Plan</div>
+          </div>
+          <div class="comparison__calc-box">
+            <div id="calcHoursSaved" class="comparison__calc-val">84 hrs</div>
+            <div class="comparison__calc-label">Engineering Hours Saved/mo</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="comparison__title" style="margin-top: 5rem;">Comprehensive Feature Comparison</h2>
+      <div class="comparison__table-wrapper">
+        <table class="comparison__table">
+          <thead>
+            <tr>
+              <th>Feature Capability</th>
+              <th>Starter</th>
+              <th>Growth</th>
+              <th>Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Universal Ingestion (Webhooks/Kafka)</td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>FluxEngine AI Reasoning Agents</td>
+              <td><span class="dash-icon">—</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Max Ingress Concurrency</td>
+              <td>1,000 req/sec</td>
+              <td>25,000 req/sec</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Dead-Letter Queue Replay</td>
+              <td>24 hours</td>
+              <td>30 days</td>
+              <td>Unlimited retention</td>
+            </tr>
+            <tr>
+              <td>OpenTelemetry Tracing</td>
+              <td><span class="dash-icon">—</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Deployment Mode</td>
+              <td>Multi-tenant Cloud</td>
+              <td>Multi-tenant Cloud</td>
+              <td>Dedicated VPC or On-Prem</td>
+            </tr>
+            <tr>
+              <td>SLA Guarantee</td>
+              <td>99.9%</td>
+              <td>99.99%</td>
+              <td>99.999% custom SLA</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__bottom">
+        <span class="footer__copy">&copy; 2026 LinkFlow Technologies Inc. All rights reserved.</span>
+        <div class="footer__socials">
+          <a href="index.html" class="footer__social-link">Home</a>
+          <a href="process.html" class="footer__social-link">The Process</a>
+          <a href="capabilities.html" class="footer__social-link">Capabilities</a>
+          <a href="about.html" class="footer__social-link">About</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/main.js"></script>
+</body>
+</html>

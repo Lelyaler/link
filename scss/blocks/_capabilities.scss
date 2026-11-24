@@ -1,0 +1,176 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.capabilities {
+  padding: 6.5rem 0;
+  background-color: #ffffff;
+  position: relative;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 0.35rem 0.95rem;
+    border-radius: 9999px;
+    background-color: rgba($color-heading-primary, 0.08);
+    color: $color-heading-primary;
+    font-size: 0.775rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: 2.35rem;
+    line-height: 1.08;
+    color: $color-heading-primary;
+    letter-spacing: -0.03em;
+    max-width: 540px;
+
+    @include respond-to(md) {
+      font-size: 3.25rem;
+    }
+
+    span {
+      color: $color-violet;
+    }
+  }
+
+  &__lead {
+    font-size: 1.05rem;
+    color: $color-body-text;
+    max-width: 440px;
+    line-height: 1.6;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__card {
+    background-color: $color-bg-light;
+    border-radius: 1.75rem;
+    padding: 2.75rem 2.25rem;
+    border: 1px solid $color-bg-border;
+    position: relative;
+    overflow: hidden;
+    transition: transform $transition-smooth, border-color $transition-smooth, box-shadow $transition-smooth;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(45, 58, 42, 0.08);
+    }
+
+    &--violet {
+      &:hover {
+        border-color: rgba($color-violet, 0.4);
+      }
+      .capabilities__card-tag {
+        color: $color-violet;
+        background: $color-violet-light;
+      }
+    }
+
+    &--emerald {
+      &:hover {
+        border-color: rgba(#10b981, 0.4);
+      }
+      .capabilities__card-tag {
+        color: #047857;
+        background: #ecfdf5;
+      }
+    }
+
+    &--coral {
+      &:hover {
+        border-color: rgba($color-coral, 0.4);
+      }
+      .capabilities__card-tag {
+        color: $color-coral;
+        background: $color-coral-light;
+      }
+    }
+
+    &--cyan {
+      &:hover {
+        border-color: rgba($color-cyan, 0.4);
+      }
+      .capabilities__card-tag {
+        color: $color-cyan;
+        background: $color-cyan-light;
+      }
+    }
+  }
+
+  &__card-tag {
+    display: inline-block;
+    font-size: 0.725rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    margin-bottom: 1.25rem;
+  }
+
+  &__card-title {
+    font-family: $font-family-display;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: $color-dark-green;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.85rem;
+  }
+
+  &__card-text {
+    font-size: 0.95rem;
+    color: $color-body-text;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  &__card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  &__card-pill {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 9999px;
+    background: #ffffff;
+    border: 1px solid rgba(45, 58, 42, 0.1);
+    color: $color-medium-green;
+    font-weight: 500;
+    transition: background-color $transition-default;
+
+    &:hover {
+      background-color: $color-bg-card;
+    }
+  }
+}

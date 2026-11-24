@@ -1,0 +1,136 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.footer {
+  background-color: $color-dark-bg;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 5rem 0 3rem 0;
+  border-top: 1px solid rgba(133, 171, 139, 0.12);
+
+  &__container {
+    @include container;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    margin-bottom: 4rem;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1.5fr repeat(4, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  &__brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 320px;
+  }
+
+  &__brand {
+    font-family: $font-family-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+
+    sup {
+      font-size: 0.65rem;
+      color: $color-heading-accent;
+    }
+  }
+
+  &__brand-motto {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  &__status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(133, 171, 139, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(133, 171, 139, 0.2);
+    width: fit-content;
+  }
+
+  &__status-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+    background-color: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+  }
+
+  &__col-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+  }
+
+  &__col-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__col-link {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color $transition-default;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  &__bottom {
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+  }
+
+  &__copy {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  &__social-link {
+    color: rgba(255, 255, 255, 0.5);
+    transition: color $transition-default;
+
+    &:hover {
+      color: #ffffff;
+    }
+
+    svg {
+      width: 1.15rem;
+      height: 1.15rem;
+    }
+  }
+}
